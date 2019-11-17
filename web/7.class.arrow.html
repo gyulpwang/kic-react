@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 1.라이브러리 지정(cdn)(react,react-dom),babel 필요(es6 언어를 지원해주는 라이브러리사용) -->
+<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+<title>리액트 일곱번째 예제(중첩)</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+	// 1. 화살표 함수로 컴포넌트를 정의(도서(Book), 제목(TitlePart), 내용(ContentPart))
+	/*
+		const 컴포넌트명 = () => (처리내용) 매개변수를 안 받는 경우
+		const 컴포넌트명 = (props) => (처리내용) 매개변수를 받는 경우
+	*/
+	// 제목
+	const TitlePart = (props) => (
+		//let pStyle={}
+		// 직접 스타일을 먹일 땐 중괄호를 두 번 써줘야한다. 객체를 세팅해주는 개념이기 때문에
+		<div style={{backgroundColor: 'red', color: 'white'}}>
+			<h3>{props.title}</h3>
+		</div>
+	)
+
+	// 내용
+	const ContentPart = (props) => (
+		<div style={{border: '1px solid blue', margin: 15}}>
+			{props.content}
+		</div>
+	)
+
+	// 부모 => 화살표함수를 사용하면 => this를 생략 가능 {this.props.title}
+	const Book = (props) => (
+		<div>
+			<TitlePart title = {props.title} />
+			<ContentPart content = {props.content} />
+		</div>
+	)
+
+	const dom = <div>
+						<Book title="삼국지" content="옛날 중국 이야기" />
+						<Book title="민수기" content="옛날 이스라엘 역사 이야기" />
+					 </div>
+	ReactDOM.render(dom, document.getElementById('root'))
+</script>
+</body>
+</html>

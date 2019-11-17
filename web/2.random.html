@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 1.라이브러리 지정(cdn)(react,react-dom),babel 필요(es6 언어를 지원해주는 라이브러리사용) -->
+<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+<title>리액트 두번째 예제</title>
+</head>
+<body>
+
+<div id="disp"></div>
+<div id="disp2"></div>
+
+<script type="text/babel">
+	const root = document.querySelector('#disp2')
+	const msg = getGreeting()
+	
+	ReactDOM.render(msg, root)
+
+	function getGreeting(){
+		// return <h1>테스트중</h1> 0 ~ 0.99999
+		const r = Math.floor(Math.random() * 3);	// 소수점 -> 정수
+
+		if(r == 0)	return <h1>react연습중</h1>
+		if(r == 1)	return <h1>웹상에서 실행하는 리액트연습</h1>
+		if(r == 2)	return <h1>자동화된 툴을 사용하는 리액트연습</h1>
+
+		return r;
+	}
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 1.라이브러리 지정(cdn)(react,react-dom),babel 필요(es6 언어를 지원해주는 라이브러리사용) -->
+<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+<title>리액트 네번째 예제(스타일 적용)</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+	ReactDOM.render(getDOM(),document.getElementById('root'))
+
+	// 함수작성
+	function getDOM(){
+		// 형식) const 객체명 = {키명 : 저장할 값,,,} carmelcase Object
+		const css1 = {
+			"color":"red",
+			"background-color":"#f0f0ff",
+			"font-size":'2em'
+		}
+		const css2 = {
+			"color":"blue",
+			"background-color":"#fff0f0",
+			"font-size":"2em"
+		}
+
+		return(
+			<div>
+				<p style={css1}>React의 웹상에서의 구조와 작성법</p>
+				<p style={css2}>React의 JSX(변수, 스타일)</p>
+			</div>
+		)
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 1.라이브러리 지정(cdn)(react,react-dom),babel 필요(es6 언어를 지원해주는 라이브러리사용) -->
+<script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+<title>리액트 여덟번째 예제(클래스 작성(생성자))</title>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+	class Hello extends React.Component{
+		// 생성자를 통해서 작업 -> props, state를 사용
+		constructor(props){
+			super(props)	// 객체를 생성 -> 생성자를 호출(props) -> 부모(props) 전달
+			// 함수를 연결해서 호출하는 구문을 사용
+			// this.호출할함수명 = this.호출할함수명.bind(this)
+//			this.clickHandler = this.clickHandler.bind(this);
+			console.log('생성자 호출확인');
+		}
+		
+		// 함수를 선언
+		render(){
+			// 화살표 함수 -> this를 생략 => 생성자에서 연결하는 구문을 사용 X
+			// class를 썼기 때문에 화살표 함수가 아니므로 this를 써줘야 한다.
+			const clickHandler = (e) => {
+				const name = this.props.name
+				alert(`${name}님 안녕하세요?`)
+			}
+
+			return(<div onClick={clickHandler}><h1>{this.props.name}</h1></div>)
+		}
+	}
+
+	const dom = <div>
+						<Hello name="테스트김" />
+						<Hello name="임  시" />
+						<Hello name="임시테스트" />
+					 </div>
+
+	ReactDOM.render(dom, document.getElementById('root'))
+</script>
+</body>
+</html>
